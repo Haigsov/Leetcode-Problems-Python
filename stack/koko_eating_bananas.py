@@ -1,3 +1,6 @@
+import math
+
+
 def minEatingSpeed(self, piles, h):
     """
     :type piles: List[int]
