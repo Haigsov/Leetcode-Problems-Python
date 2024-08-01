@@ -1,7 +1,7 @@
 class TimeMap(object):
 
     def __init__(self):
-        time_map = {}
+        self.time_map = {}
 
 
     def set(self, key, value, timestamp):
@@ -11,10 +11,9 @@ class TimeMap(object):
         :type timestamp: int
         :rtype: None
         """
-        if key not in time_map:
-            time[key] = [[timestamp, value]]
-        else:
-            time[key].append([timestamp, value])
+        if key not in self.time_map:
+            self.time_map[key] = []
+        self.time_map[key].append([timestamp, value])
         
         
 
@@ -24,6 +23,16 @@ class TimeMap(object):
         :type timestamp: int
         :rtype: str
         """
+        res, values = "", self.time_map.get(key, [])
+        l, r = 0, len(values) - 1
+        while l <= r:
+            m = (l + r) // 2
+            if values[m][1] <= timestamp:
+                res = values[m][0]
+                l = m + 1
+            else:
+                r = m - 1
+        return res
         
 
 
