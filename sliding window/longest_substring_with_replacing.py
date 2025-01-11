@@ -17,6 +17,19 @@ class Solution(object):
                         break
                 curr += s[j]
                 j += 1
+                res = max(len(curr), res)
+
+        for i in range(len(s) - 1, -1, -1):
+            curr = s[i]
+            j = i + 1
+            while j < len(s):
+                if curr[0] != s[j]:
+                    if k > 0:
+                        k -= 1
+                    else:
+                        break
+                curr += s[j]
+                j += 1
             res = max(len(curr), res)
     
         return res
